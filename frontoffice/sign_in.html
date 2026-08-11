@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Party2Go - Criar Conta</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Public Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .page-container {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 40px;
+      }
+
+      .logo img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .logo-text {
+        font-family: "Public Sans", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.6px;
+      }
+
+      .logo-text .party {
+        color: #103841;
+      }
+
+      .logo-text .go {
+        color: #fd5e3a;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 10px 10px 50px rgba(68, 68, 68, 0.3);
+        display: grid;
+        grid-template-rows: auto auto;
+      }
+
+      .card-header {
+        background-color: #fd5e3a;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .card-header-icon {
+        width: 64px;
+        height: 64px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card-header-icon img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .card-header h1 {
+        font-family: "Public Sans", sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+        letter-spacing: -0.75px;
+        line-height: 36px;
+        margin-top: 8px;
+      }
+
+      .card-header p {
+        font-size: 14px;
+        font-weight: 400;
+        color: white;
+        line-height: 20px;
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .card-body {
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 13.57px;
+      }
+
+      .form-label {
+        font-family: "Public Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #103841;
+        line-height: 14px;
+        padding-top: 4px;
+      }
+
+      .input-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .input-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .input-icon img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .form-input {
+        width: 100%;
+        height: 48px;
+        padding: 12px;
+        padding-left: 40px;
+        border: 1px solid #e0e0e0;
+        border-radius: 16px;
+        font-family: "Public Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #103841;
+        background-color: #ffffff;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .form-input:first-of-type {
+        padding-left: 12px;
+      }
+
+      .form-input::placeholder {
+        color: #67737e;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #fd5e3a;
+        box-shadow: 0 0 0 3px rgba(253, 94, 58, 0.1);
+      }
+
+      .submit-button {
+        background-color: #fd5e3a;
+        border: none;
+        border-radius: 9999px;
+        height: 56px;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        cursor: pointer;
+        font-family: "Public Sans", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        line-height: 28px;
+        box-shadow:
+          0px 10px 15px -3px rgba(253, 94, 58, 0.2),
+          0px 4px 6px -4px rgba(253, 94, 58, 0.2);
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .submit-button:hover {
+        background-color: #e94f2b;
+        transform: translateY(-2px);
+        box-shadow:
+          0px 12px 20px -2px rgba(253, 94, 58, 0.3),
+          0px 6px 8px -3px rgba(253, 94, 58, 0.3);
+      }
+
+      .submit-button:active {
+        transform: translateY(0);
+      }
+
+      .submit-button img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .login-link-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding-top: 14.79px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .login-link-text {
+        color: #67737e;
+        font-weight: 400;
+      }
+
+      .login-link {
+        background: none;
+        border: none;
+        color: #fd5e3a;
+        font-family: "Public Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        line-height: 24px;
+        padding: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .login-link:hover {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 480px) {
+        .page-container {
+          margin: 0 auto;
+        }
+
+        .card {
+          border-radius: 30px;
+        }
+
+        .card-body {
+          padding: 24px;
+        }
+
+        .card-header h1 {
+          font-size: 24px;
+          line-height: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img
+          src="./src/assets/logo.svg"
+          alt="Party2Go Logo"
+        />
+        <div class="logo-text">
+          <span class="party">Party</span><span class="go">2Go</span>
+        </div>
+      </div>
+
+      <!-- Sign Up Card -->
+      <div class="card">
+        <!-- Header Section -->
+        <div class="card-header">
+          <div class="card-header-icon">
+            <img
+              src="https://www.figma.com/api/mcp/asset/95752abf-584e-4bb5-83b0-54bccf7ba064"
+              alt="Party Icon"
+            />
+          </div>
+          <h1>Criar Conta</h1>
+          <p>Junte-se à maior rede de alegria infantil.</p>
+        </div>
+
+        <!-- Body Section -->
+        <div class="card-body">
+          <form onsubmit="handleSubmit(event)">
+            <!-- Nome Completo Field -->
+            <div class="form-group">
+              <label class="form-label">Nome Completo</label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Ex: Maria Silva"
+                  name="fullname"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <div class="input-wrapper">
+                <div class="input-icon">
+                  <img
+                    src="https://www.figma.com/api/mcp/asset/e0789400-a732-4dc6-b42e-2febeacde95e"
+                    alt="Email Icon"
+                  />
+                </div>
+                <input
+                  type="email"
+                  class="form-input"
+                  placeholder="seu@email.com"
+                  name="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Palavra-passe Field -->
+            <div class="form-group">
+              <label class="form-label">Palavra-passe</label>
+              <div class="input-wrapper">
+                <div class="input-icon">
+                  <img
+                    src="https://www.figma.com/api/mcp/asset/a4c54e76-ec41-4d97-8201-7d4740362178"
+                    alt="Password Icon"
+                  />
+                </div>
+                <input
+                  type="password"
+                  class="form-input"
+                  placeholder="••••••••"
+                  name="password"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">
+              <span>Registar</span>
+              <img
+                src="https://www.figma.com/api/mcp/asset/7b86b6e0-b5d2-46d0-baa4-32c42318b9f3"
+                alt="Arrow Icon"
+              />
+            </button>
+          </form>
+
+          <!-- Login Link -->
+          <div class="login-link-container">
+            <span class="login-link-text">Já tem conta?</span>
+            <button class="login-link" onclick="navigateToLogin()">
+              Inicie sessão
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        const fullname = event.target.elements["fullname"].value;
+        const email = event.target.elements["email"].value;
+        const password = event.target.elements["password"].value;
+
+        console.log("Form submitted:", { fullname, email, password });
+        // Add your form submission logic here
+        alert("Conta criada com sucesso!");
+      }
+
+      function navigateToLogin() {
+        console.log("Navigate to login");
+        // Add your navigation logic here
+        // window.location.href = '/login';
+      }
+    </script>
+  </body>
+</html>

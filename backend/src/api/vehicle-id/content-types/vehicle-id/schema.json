@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vehicle_ids",
+  "info": {
+    "singularName": "vehicle-id",
+    "pluralName": "vehicle-ids",
+    "displayName": "Vehicle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vehicle_id": {
+      "type": "uid"
+    },
+    "licence_plate": {
+      "type": "string"
+    },
+    "max_weight": {
+      "type": "decimal"
+    },
+    "max_dimensions": {
+      "type": "json"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "courier": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::courier.courier",
+      "mappedBy": "vehicle"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "order_id": {
+      "type": "uid"
+    },
+    "client_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "orders"
+    },
+    "products": {
+      "type": "json"
+    },
+    "combos": {
+      "type": "json"
+    },
+    "date_collection": {
+      "type": "datetime"
+    },
+    "address": {
+      "type": "string"
+    },
+    "collection_address": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "num_products": {
+      "type": "integer"
+    },
+    "order_status": {
+      "type": "string",
+      "default": "pending"
+    },
+    "courier_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::courier.courier",
+      "inversedBy": "orders"
+    },
+    "date_delivery": {
+      "type": "datetime"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "max": 5
+    },
+    "tags": {
+      "type": "json"
+    },
+    "intructions": {
+      "type": "text"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "classification": {
+      "type": "integer",
+      "min": 0,
+      "max": 5
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "started_at": {
+      "type": "datetime"
+    },
+    "ended_at": {
+      "type": "datetime"
+    },
+    "delivery_duration": {
+      "type": "integer"
+    }
+  }
+}
